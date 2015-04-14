@@ -463,6 +463,18 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <tabset justified="true">
+                <tab heading="create ressource">
+                    <div ng-include="creationEditor.html">
+                    </div>
+                </tab>
+                <tab heading="edit ressource">
+                    <div ng-include="editEditor.html">
+                    </div>
+                </tab>
+                <tab heading="view ressource">
+                    <div ng-include="viewEditor.html">
+                    </div>
+                </tab>    
             </tabset>
 
         </div>
