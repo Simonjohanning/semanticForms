@@ -1,0 +1,96 @@
+@prefix sf: <http://semanticforms.org> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix sc: <http://schema.org/>. 
+@prefix db: <http://dbpedia.org/ontology> .
+@prefix dc: <http://purl.org/dc/terms> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+
+sf:PatternForm rdfs:subClassOf owl:Ontology;
+    rdfs:label "patternForm Vocabulary";
+    rdfs:comment "Describes a reduced vocabulary"@en .
+
+sf:PatternProperty rdfs:subClassOf owl:Class;
+    rdfs:label "corresponding patternForm"@en;
+    rdfs:comment "The pattern form the property corresponds to"@en .
+
+sf:relatesToProperty a rdf:Property;
+    rdfs:label "Relates to Property"@en;
+    rdfs:comment "Describes which property the form property relates to"@en;
+    rdfs:domain sf:PatternProperty;
+    rdfs:range rdf:Property .
+
+sf:correspondingPatternForm a rdf:Property;
+    rdfs:label "corresponding patternForm"@en;
+    rdfs:comment "The pattern form the property corresponds to"@en;
+    rdfs:domain sf:PatternProperty;
+    rdfs:range sf:patternForm .
+
+sf:correspondingClass a rdf:Property;
+    rdfs:label "corresponding Class"@en;
+    rdfs:comment "The class that the pattern property belongs to"@en;
+    rdfs:domain sf:PatternProperty;
+    rdfs:range sf:ReducedClass .
+
+sf:ordinality a rdf:Property;
+    rdfs:label "ordinality"@en;
+    rdfs:comment "descibes the orinality of the patternProperty"@en;
+    rdfs:domain sf:PatternProperty;
+    rdfs:range "mandatory";
+    rdfs:range "optional" .
+
+sf:validationRegex a rdf:Property;
+    rdfs:label "validation regex"@en;
+    rdfs:comment "The regular expression that is use to validate the value of the property"@en;
+    rdfs:domain sf:PatternProperty;
+    rdfs:range xsd:string .
+
+sf:inputType a rdf:Property;
+    rdfs:label "input field"@en;
+    rdfs:comment "describes which input field is used for the instanceEditor"@en;
+    rdfs:domain sf:PatternProperty;
+    rdfs:range sf:formInputType.
+
+sf:inputData a rdf:Property;
+    rdfs:label "input data"@en;
+    rdfs:comment "describes data can be inserted in the input field in the instanceEditor"@en;
+    rdfs:domain sf:PatternProperty;
+    rdfs:range sf:FormInputData.
+
+sf:formInputType a owl:Class;
+    rdfs:label "class of input fields for the formInstance"@en;
+    rdfs:comment "describes the available input fields for the instanceEditor"@en .
+
+sf:Text a sf:formInputType;
+    rdfs:label "text"@en;
+    rdfs:comment "text input field in HTML5-forms"@en .
+
+sf:TextBox a sf:formInputType;
+    rdfs:label "textbox"@en;
+    rdfs:comment "textbox input field in HTML5-forms"@en .
+
+
+sf:CheckBox a sf:formInputType;
+    rdfs:label "checkbox"@en;
+    rdfs:comment "checkbox in HTML5-forms"@en .
+
+sf:RadioBox a sf:formInputType;
+    rdfs:label "radiobox"@en;
+    rdfs:comment "radiobox in HTML5-forms"@en .
+
+sf:SelectList a sf:formInputType;
+    rdfs:label "select"@en;
+    rdfs:comment "select list in HTML5-forms"@en .
+
+sf:FormInputData a owl:Class;
+    rdfs:label "class of input data for the formInstance"@en;
+    rdfs:comment "describes the available input data for the instanceEditor"@en .
+
+sf:index a rdf:Property;
+    rdfs:label "Index"@en;
+    rdfs:comment "The index of the property in the FormPattern"@en;
+    rdfs:domain sf:PatternProperty;
+    rdfs:range xsd:integer .
